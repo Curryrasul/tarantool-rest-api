@@ -1,0 +1,20 @@
+POST request FROM[::1]:59268 ... AT 2021-06-11 21:48:17.380599659 +0300 MSK m=+4.478454078
+Add: {"key": 1, "value": {"name":"Cacti", "secondName":"Jacks"}}
+Response: Key already exist 409
+
+POST request FROM[::1]:59270 ... AT 2021-06-11 21:48:22.90939289 +0300 MSK m=+10.007247313
+Add: {"key": 2, "value": {"name":"Cacti", "secondName":"Jacks"}}
+Success
+
+GET request FROM[::1]:59274 ... AT 2021-06-11 21:48:39.687007371 +0300 MSK m=+26.784861808
+Requested ID: 1
+Response: {"name":"Cacti","secondName":"Jacks"}
+
+GET request FROM[::1]:59276 ... AT 2021-06-11 21:48:44.656467413 +0300 MSK m=+31.754321833
+Requested ID: 2
+Response: {"name":"Cacti","secondName":"Jacks"}
+
+GET request FROM[::1]:59278 ... AT 2021-06-11 21:48:48.997513151 +0300 MSK m=+36.095367582
+Requested ID: 3
+Response: 404
+
