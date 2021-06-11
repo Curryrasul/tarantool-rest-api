@@ -2,8 +2,8 @@
 
 REST API доступен по адресу http://35.246.166.66/kv
 
-- POST /kv body: {key: "test", "value": {name: "Name", secondName: "secondName"}} 
-- PUT kv/{id} body: {"value": {name: "Name", secondName: "secondName"}} 
+- POST /kv body: {"key": 1, "value": {"name": "Name", "secondName": "secondName"}} 
+- PUT kv/{id} body: {"value": {"name": "Name", "secondName": "secondName"}} 
 - GET kv/{id} 
 - DELETE kv/{id} 
 - POST возвращает 409 если ключ уже существует, 
