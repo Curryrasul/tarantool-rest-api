@@ -26,3 +26,9 @@ go build main.go utils.go structs.go api.go
 ```
 
 api.go содержит обработку всех запросов
+
+Пример запроса:
+	POST /kv body: {"key": 10, "value": {"name": "Mail", "secondName": "Ru"}}
+	GET /kv/{10} , где id = 10 - query parameter
+	DELETE /kv/{10}, где id = 10 - query parameter
+	PUT kv/{10} , где id = 10 - query parameter, body : {"name" : "New", "secondName": "data"}
