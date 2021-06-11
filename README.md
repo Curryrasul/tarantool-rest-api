@@ -2,15 +2,17 @@
 
 REST API доступен по адресу http://35.246.166.66/kv
 
-- POST /kv body: {key: "test", "value": {SOME ARBITRARY JSON}} 
-- PUT kv/{id} body: {"value": {SOME ARBITRARY JSON}} 
+- POST /kv body: {key: "test", "value": {name: "Name", secondName: "secondName"}} 
+- PUT kv/{id} body: {"value": {name: "Name", secondName: "secondName"}} 
 - GET kv/{id} 
 - DELETE kv/{id} 
 - POST возвращает 409 если ключ уже существует, 
 - POST, PUT возвращают 400 если боди некорректное 
 - PUT, GET, DELETE возвращает 404 если такого ключа нет - все операции логируются
 
-логфайл хранится на сервере, ![logfile][./logfile.jpg]
+формат спейса : {id unsigned, map{name, secondName}}
+
+логфайл хранится на сервере, ![logfile](./logfile.jpg)
 
 ```bash
 tarantool
