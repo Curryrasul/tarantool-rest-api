@@ -14,12 +14,37 @@ REST API доступен по адресу http://35.246.166.66/kv
 
 логфайл хранится на сервере, ![logfile](./logfile.jpg)
 
+настройка Tarantool:
 ```bash
 tarantool
-box.cfg{listen = 3311}
+box.schema.user.passwd('pass')
+box.schema.space.create("mail")
+s = box.space.mail
+s:format({
+	{name = 'id', type = 'unsigned'},
+	{name = 'val', type = 'map'}
+})
+s:create_index('primary', {
+	type = 'hash',
+	parts = {'id'}
+})
 ```
 
-Запускает веб-сервер на 8080 порту на всех сетевых интерфейсах
+Запуск Tarantool как демона: <br>
+В файл app.lua добавляем:
+	box.cfg {
+		listen = 3311,
+		background = true,
+		log = '1.log',
+		pid_file = '1.pid'
+	}
+
+Запуск Tarantool как демона на localhost:3311:
+```bash
+tarantool app.lua
+```
+
+Запуск сервера (подключается к Tarantool по localhost:3311)
 ```bash
 go build main.go utils.go structs.go api.go
 ./main
@@ -32,3 +57,5 @@ api.go содержит обработку всех запросов
 	GET /kv/{10} , где id = 10 - query parameter<br>
 	DELETE /kv/{10}, где id = 10 - query parameter<br>
 	PUT kv/{10} , где id = 10 - query parameter, body : {"name" : "New", "secondName": "data"}<br>
+
+http://35.246.166.66/kv?id=1
